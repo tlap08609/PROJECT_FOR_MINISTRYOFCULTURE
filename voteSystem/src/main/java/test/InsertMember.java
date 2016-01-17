@@ -78,6 +78,7 @@ public class InsertMember {
 //		Member aa1 = aa.findByPrimaryKey(tt);
 //		System.out.println(aa1.getMemberName());
 		VotesystemHibernateDAO aa = new VotesystemHibernateDAO();
+		System.out.println(aa.queryCustomizedPlan("邱正生", "25"));
 //		System.out.println(aa.getAll());
 //		List<Votesystem> ee= aa.findPlan(1L);
 

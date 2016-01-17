@@ -81,13 +81,14 @@ body {
 		
 		$("form").submit(function() {
 			switch (this.id) {
-			case "magic":
+			//gg的神奇小按鈕
+/* 			case "magic":
 				var $mname = $('#mname').val();
 				console.log($mname);
 				$('#magic1').val($mname);
 				$('#magic2').val($mname);
-				$('#magic3').val($mname);
-				return false;
+				$('#magic3').val($mname); */
+				//return false;
 			case "search":
 				var $int = $('#int').val();
 				// var $pattern = /^[1-9]$|^[1-9][0-9]$|^56[0-3]$/;
@@ -111,9 +112,9 @@ body {
 				//第二種
 //				alert("輸入完成!!轉回原先頁面");
 //			}
-					return true;
+//					return true;
 			case "getall":
-				return true;
+				//return true;
 			
 				// var $lg_password = $('#login_password').val();
 				//  var $Check_ver = $('#Check_ver').val();
@@ -143,7 +144,8 @@ body {
 				//  return true;
 				//  }
 				// return false;
-
+			case "login":
+				return true;
 			default:
 				return false;
 			}
@@ -165,23 +167,39 @@ body {
 			</div>
 		</div>
 	</div>
-	<form id="search" class="form-inline autoname" action="queryPlan" method="post">
+	<form id="login" class="form-inline autoname" action="queryCustomizedPlan"
+		method="post">
 		<div class="form-group">
-			<label for="exampleInputName2">搜索計畫編號</label> <input id="int"
-				type="text" class="form-control" placeholder="例如：1~536的數字" name="word">
+			<label for="exampleInputName2">委員姓名</label> <input id=""
+				type="text" class="form-control" placeholder="委員姓名"
+				name="coname"> 
+			<label for="exampleInputName2">日期</label> <input
+				id="" type="text" class="form-control" placeholder="日期"
+				name="cotime">
 		</div>
-		<button type="submit" class="btn btn-default" id="magicbutton">搜索計畫編號請點選我</button>
+		<button type="submit" class="btn btn-default" id="magicbutton">填寫完請點選我</button>
 	</form>
-		<form id="getall" class="form-inline autoname" action="queryall" method="post">
+	<form id="search" class="form-inline autoname" action="queryPlan"
+		method="post">
+		<div class="form-group">
+			<label for="exampleInputName2">搜索編號</label> <input id="int"
+				type="text" class="form-control" placeholder="例如：1~536的數字"
+				name="word">
+		</div>
+		<button type="submit" class="btn btn-default" id="magicbutton">編號日期填寫完請點選我</button>
+	</form>
+	<form id="getall" class="form-inline autoname" action="queryall"
+		method="post">
 		<button type="submit" class="btn btn-default" id="magicbutton">第一場</button>
 	</form>
-	<form id="magic" class="form-inline autoname">
+	<!-- gg的神奇小按鈕 -->
+	<!-- 	<form id="magic" class="form-inline autoname">
 		<div class="form-group">
 			<label for="exampleInputName2">委員姓名</label> <input id="mname"
 				type="text" class="form-control" placeholder="例如：XXX" value="">
 		</div>
 		<button type="submit" id="magicbutton" class="btn btn-default">輸入姓名後請點選我</button>
-	</form>
+	</form> -->
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12 text-center formTim">
@@ -190,7 +208,7 @@ body {
 						<table class="table table-striped">
 							<tr>
 								<td class="active">委員名字</td>
-								<td class="active">編號</td>
+								<td class="active">日期</td>
 								<td class="active">組別</td>
 								<td class="success">計畫名稱</td>
 								<td class="active">分數</td>
@@ -199,28 +217,31 @@ body {
 							</tr>
 							<c:if test='${not empty plans_lp}'>
 								<c:forEach var='pp' varStatus='vs' items='${plans_lp}'>
-								<Form id="updateForm" Action="updateVote" method="POST">
-								
-								<input type="hidden" name="pk" value="${pp.no}">
-								<input type="hidden" name="plClass" value="${pp.plClass}">
-								<input type="hidden" name="plName" value="${pp.plName}">
-									<tr>
-										<td class="active"><input id="magic1" type="text"
-											name="name" value="${pp.coName}"></td>
-										<td class="active">${pp.no}</td>
-										<td class="active">${pp.plClass}</td>
-										<td class="success">${pp.plName}</td>
-										<td class="active"><input id="intscore${vs.count}" class="wone" name="score" type="text" value="${pp.score}">
-										</td>
-										<td class="warning"><input type="text" name="comment" value="${pp.comment}" size="30"></td>
-										<td class="warning">
-											<button class="btn btn-default" type="submit">確認</button>
-										</td>
-									</tr>
-									
+									<Form id="updateForm" Action="updateVote" method="POST">
+
+										<input type="hidden" name="pk" value="${pp.no}"> <input
+											type="hidden" name="plClass" value="${pp.plClass}"> <input
+											type="hidden" name="plName" value="${pp.plName}"><input
+											type="hidden" name="time" value="${pp.time}">
+										<tr>
+											<td class="active"><input id="magic1" type="text"
+												name="name" value="${pp.coName}"></td>
+											<td class="active">${pp.time}</td>
+											<td class="active">${pp.plClass}</td>
+											<td class="success">${pp.plName}</td>
+											<td class="active"><input id="intscore${vs.count}"
+												class="wone" name="score" type="text" value="${pp.score}">
+											</td>
+											<td class="warning"><input type="text" name="comment"
+												value="${pp.comment}" size="30"></td>
+											<td class="warning">
+												<button class="btn btn-default" type="submit">確認</button>
+											</td>
+										</tr>
+
 									</Form>
-									</c:forEach>
-									<%-- 
+								</c:forEach>
+								<%-- 
 								<div class="col-md-4 portfolio-item ttt" style="color: black">
 									<span class='zoom' id='ex1'> <img
 										class="img-responsive tti" width="180" height='320'
@@ -237,7 +258,7 @@ body {
 									</h4>
 									<p>庫存數量：${mb.productStock}</p>
  --%>
-									<%-- 									<FORM id="hiddencart" action="<c:url value='BuyBook.do' />"
+								<%-- 									<FORM id="hiddencart" action="<c:url value='BuyBook.do' />"
 										method="POST">
 										<select name='qty'>
 											<c:forEach var='x' begin='1' end='${mb.productStock}'>
@@ -263,14 +284,14 @@ body {
 
 										<!-- <Input type='submit' value='加入購物車'> -->
 									</FORM> --%>
-							
+
 							</c:if>
-							</table>			
+						</table>
 
 					</div>
-					
-					
-	
+
+
+
 					<!-- <table class="table table-striped">
 							<tr>
 								<td class="active">委員名字</td>

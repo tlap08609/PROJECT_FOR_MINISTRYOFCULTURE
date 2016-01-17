@@ -21,6 +21,8 @@ public interface VotesystemDAO {
 	List<Votesystem> getAll();
 	
 	List<Votesystem> getClass(String word);
+	
+	List<Votesystem> queryCustomizedPlan(String value,String cotime);
 
 	}
 

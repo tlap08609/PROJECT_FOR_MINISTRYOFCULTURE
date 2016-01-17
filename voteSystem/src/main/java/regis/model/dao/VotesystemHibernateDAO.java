@@ -134,6 +134,9 @@ public class VotesystemHibernateDAO implements VotesystemDAO {
 	
 	
 	
+	
+	
+	
 	public List<Votesystem> getAll() {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.openSession();
@@ -149,6 +152,35 @@ public class VotesystemHibernateDAO implements VotesystemDAO {
 				tx.rollback();
 			System.out.println(ex.getMessage());
 		}
+		return list;
+	}
+	
+	
+	public List<Votesystem> queryCustomizedPlan(String value,String cotime) {
+		List<Votesystem> list = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "FROM Votesystem b WHERE b.coName =? and b.time =?";
+			Query query = session.createQuery(hql);
+//			query.setParameter("word", "%"+word+"%");
+			query.setParameter(0, value);
+			query.setParameter(1, cotime);
+			list = query.list();
+			// for (Member e : list) {
+			// System.out.printf("%2d %6s %6d %14s %2d\n", e.getId(),
+			// e.getMemberName(), e.getmemberPs(), e.getmemberEmail());
+			//
+			// }
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			System.out.println(e.getMessage());
+		}
+
 		return list;
 	}
 

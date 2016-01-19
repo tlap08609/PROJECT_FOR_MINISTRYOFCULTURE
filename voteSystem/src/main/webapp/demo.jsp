@@ -51,6 +51,18 @@ body {
 .autoname {
 	margin: 10px 0 50px 30px;
 }
+#magic1{
+	width:100px;
+}
+#magic2{
+	width:140px;
+}
+#magicComment{
+	width:150px;
+}
+#magicTime{
+	width:70px;
+}
 </style>
 <script>
 	// $(function() {
@@ -77,6 +89,21 @@ body {
 		// });
 		// console.log($('#magic1'));
 		var $pattern = /^\d+$/;
+//		var x = "newQty" + index;
+//		var newQty = document.getElementById(x).value;
+//		var aa=0;
+//		for(aa=0;aa<= $('#magicComment')${vs.count} ; aa++){
+//		console.log(aa);
+//		}
+//		var $magicComment = $('#magicComment').val();
+//		console.log($magicComment);
+		
+		
+//		if($magicComment == null){
+//			$('td').css('background', 'gray');
+//			} 
+		
+		
 		
 		
 		$("form").submit(function() {
@@ -89,18 +116,20 @@ body {
 				$('#magic2').val($mname);
 				$('#magic3').val($mname); */
 				//return false;
-			case "search":
-				var $int = $('#int').val();
+//			case "search":
+//				var $int = $('#int').val();
 				// var $pattern = /^[1-9]$|^[1-9][0-9]$|^56[0-3]$/;
 				// $int.trim().length == 0 || 
-				if (!$pattern.test($int)) {
-					alert("請檢察格式是否正確");
-					return false;
-			} else {
-					return true;
-				}
+//				if (!$pattern.test($int)) {
+//					alert("請檢察格式是否正確");
+//					return false;
+//			} else {
+//					return true;
+//				}
 			case "updateForm":
-//				var $int = $('#intscore').val();
+				//0119
+				return true;
+				
 //				console.log($('#intscore'));
 //				if (!$pattern.test($int)) {
 					
@@ -113,7 +142,7 @@ body {
 //				alert("輸入完成!!轉回原先頁面");
 //			}
 //					return true;
-			case "getall":
+//			case "getall":
 				//return true;
 			
 				// var $lg_password = $('#login_password').val();
@@ -178,8 +207,8 @@ body {
 				name="cotime">
 		</div>
 		<button type="submit" class="btn btn-default" id="magicbutton">填寫完請點選我</button>
-	</form>
-	<form id="search" class="form-inline autoname" action="queryPlan"
+ 	</form>
+<!--	<form id="search" class="form-inline autoname" action="queryPlan"
 		method="post">
 		<div class="form-group">
 			<label for="exampleInputName2">搜索編號</label> <input id="int"
@@ -187,11 +216,13 @@ body {
 				name="word">
 		</div>
 		<button type="submit" class="btn btn-default" id="magicbutton">編號日期填寫完請點選我</button>
-	</form>
-	<form id="getall" class="form-inline autoname" action="queryall"
+	</form> -->
+	
+	
+<!-- 	<form id="getall" class="form-inline autoname" action="queryall"
 		method="post">
 		<button type="submit" class="btn btn-default" id="magicbutton">第一場</button>
-	</form>
+	</form> -->
 	<!-- gg的神奇小按鈕 -->
 	<!-- 	<form id="magic" class="form-inline autoname">
 		<div class="form-group">
@@ -213,7 +244,7 @@ body {
 								<td class="success">計畫名稱</td>
 								<td class="active">分數</td>
 								<td class="warning">委員意見</td>
-								<td class="warning">填完請確認</td>
+								<td class="warning">確認</td>
 							</tr>
 							<c:if test='${not empty plans_lp}'>
 								<c:forEach var='pp' varStatus='vs' items='${plans_lp}'>
@@ -226,13 +257,14 @@ body {
 										<tr>
 											<td class="active"><input id="magic1" type="text"
 												name="name" value="${pp.coName}"></td>
-											<td class="active">${pp.time}</td>
-											<td class="active">${pp.plClass}</td>
+											<td id="magicTime" class="active">${pp.time}</td>
+											<td id="magic2" class="active">${pp.plClass}</td>
 											<td class="success">${pp.plName}</td>
+											<%-- ${vs.count} --%>
 											<td class="active"><input id="intscore${vs.count}"
 												class="wone" name="score" type="text" value="${pp.score}">
 											</td>
-											<td class="warning"><input type="text" name="comment"
+											<td class="warning"><input id="magicComment" type="text" name="comment"
 												value="${pp.comment}" size="30"></td>
 											<td class="warning">
 												<button class="btn btn-default" type="submit">確認</button>

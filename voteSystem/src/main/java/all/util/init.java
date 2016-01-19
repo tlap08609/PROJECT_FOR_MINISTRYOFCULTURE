@@ -12,7 +12,9 @@ import co_name.model.Coname;
 public class init {
 
 	public static void main(String[] args) throws IOException {
-		String co_name = "votesystem_test.csv";
+		
+		String co_name = "votesystem0118joy.csv";
+//		String co_name = "votesystem_test.csv";
 		BufferedReader br = null;
 		String line = "";
 		VotesystemHibernateDAO init_votesystem = new VotesystemHibernateDAO();

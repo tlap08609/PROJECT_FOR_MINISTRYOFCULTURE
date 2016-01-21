@@ -22,28 +22,29 @@ public class updateVote extends HttpServlet {
 //		HttpSession session = request.getSession(false);
 		
 		String name = request.getParameter("name");
-		System.out.println("name-"+name);
-		String score = request.getParameter("score");
+		String score = request.getParameter("score").trim();
+		
+		if (score == null || score.trim().length() == 0) {
+			score = "0";
+			//int iscore = Integer.parseInt(score);
+		}
 		int iscore = Integer.parseInt(score);
-		String comment = request.getParameter("comment");
+		String comment = request.getParameter("comment").trim();
 		String time = request.getParameter("time");
 		String plClass = request.getParameter("plClass");
 		String plName = request.getParameter("plName");
 		String plNo = request.getParameter("plNo");
 		String pk = request.getParameter("pk");
 		int ipk = Integer.parseInt(pk);
+		if(comment == null || comment.trim().length() == 0){
+			comment=" ";
+		}
 		VotesystemHibernateDAO aa = new VotesystemHibernateDAO();
 		Votesystem vh = new Votesystem(ipk,name,plNo,time,plName,plClass,iscore,comment);
 		aa.update(vh);
 		
 		
-//		這是第一種方法
-//		response.sendRedirect("demo.jsp");
-//		這是第二種方法
-
-//		System.out.println("value="+value);
 		
-//		System.out.println("cotime="+cotime);
 		VotesystemHibernateDAO query = new VotesystemHibernateDAO();
 //		String value = (String) session.getAttribute("user");
 //		System.out.println("value="+value);

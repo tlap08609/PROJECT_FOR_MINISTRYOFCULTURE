@@ -167,7 +167,7 @@ public class VotesystemHibernateDAO implements VotesystemDAO {
 			Query query = session.createQuery(hql);
 //			query.setParameter("word", "%"+word+"%");
 			query.setParameter(0, value);
-			query.setParameter(1, cotime);
+			query.setParameter(1,cotime);
 			list = query.list();
 			// for (Member e : list) {
 			// System.out.printf("%2d %6s %6d %14s %2d\n", e.getId(),

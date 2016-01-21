@@ -3,6 +3,7 @@ package regis.model;
 public class Votesystem {
 	private long no;
 	String coName;
+	String plNo;
     String time;
     String plName;
     String plClass;
@@ -13,24 +14,27 @@ public class Votesystem {
 	public Votesystem() {
 		super();
 	}
-	public Votesystem(long no,String coName,String time,  String plName, String plClass
+	public Votesystem(long no,String coName,String plNo,String time,  String plName, String plClass
 			) {
 		super();
 		this.no = no;
-		this.time = time;
 		this.coName = coName;
+		this.plNo = plNo;
+		
+		this.time = time;
 		this.plClass = plClass;
 		this.plName = plName;
 	}
 
-	public Votesystem(long no,String coName,String time,  String plName, String plClass, 
+	public Votesystem(long no,String coName,String plNo,String time,  String plName, String plClass, 
 			int score, String comment) {
 		super();
 		this.no = no;
-		this.time = time;
 		this.coName = coName;
-		this.plClass = plClass;
+		this.plNo = plNo;
+		this.time = time;
 		this.plName = plName;
+		this.plClass = plClass;
 		this.score = score;
 		this.comment = comment;
 	}
@@ -38,21 +42,23 @@ public class Votesystem {
 	public long getNo() {
 		return no;
 	}
-
-
 	public void setNo(long no) {
 		this.no = no;
 	}
-
-
 	public String getCoName() {
 		return coName;
 	}
-
-
 	public void setCoName(String coName) {
 		this.coName = coName;
 	}
+	
+	public String getplNo() {
+		return plNo;
+	}
+	public void setplNo(String plNo) {
+		this.plNo = plNo;
+	}
+	
 	
 	public void setTime(String time) {
 		this.time = time;

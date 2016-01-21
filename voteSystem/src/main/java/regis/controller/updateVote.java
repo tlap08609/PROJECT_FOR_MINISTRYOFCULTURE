@@ -29,10 +29,11 @@ public class updateVote extends HttpServlet {
 		String time = request.getParameter("time");
 		String plClass = request.getParameter("plClass");
 		String plName = request.getParameter("plName");
+		String plNo = request.getParameter("plNo");
 		String pk = request.getParameter("pk");
 		int ipk = Integer.parseInt(pk);
 		VotesystemHibernateDAO aa = new VotesystemHibernateDAO();
-		Votesystem vh = new Votesystem(ipk,name,time,plName,plClass,iscore,comment);
+		Votesystem vh = new Votesystem(ipk,name,plNo,time,plName,plClass,iscore,comment);
 		aa.update(vh);
 		
 		

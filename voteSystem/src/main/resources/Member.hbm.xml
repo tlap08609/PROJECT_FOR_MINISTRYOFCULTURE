@@ -8,6 +8,7 @@
             <generator class="native" />
         </id>
         <property name="coName"  column='CO_NAME' />
+        <property name="plNo"  column='PL_NO' />
         <property name="time"  column='CO_TIME' />        
         <property name="plName" column='PL_NAME'/>
         <property name="plClass" column='PL_CLASS' />

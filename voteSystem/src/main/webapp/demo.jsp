@@ -127,7 +127,12 @@ body {
 //					return true;
 //				}
 			case "updateForm":
-				//0119
+				
+//		var x = "intscore" + index;
+//		var newQty = document.getElementById(x).value;
+				
+				alert("輸入完成!!轉回原先頁面");
+				
 				return true;
 				
 //				console.log($('#intscore'));
@@ -239,7 +244,7 @@ body {
 						<table class="table table-striped">
 							<tr>
 								<td class="active">委員名字</td>
-								<td class="active">日期</td>
+								<td class="active">編號</td>
 								<td class="active">組別</td>
 								<td class="success">計畫名稱</td>
 								<td class="active">分數</td>
@@ -250,14 +255,17 @@ body {
 								<c:forEach var='pp' varStatus='vs' items='${plans_lp}'>
 									<Form id="updateForm" Action="updateVote" method="POST">
 
-										<input type="hidden" name="pk" value="${pp.no}"> <input
-											type="hidden" name="plClass" value="${pp.plClass}"> <input
+										<input type="hidden" name="pk" value="${pp.no}">
+										<input type="hidden" name="plName" value="${pp.plName}">
+										<input type="hidden" name="plClass" value="${pp.plClass}"> <input
 											type="hidden" name="plName" value="${pp.plName}"><input
 											type="hidden" name="time" value="${pp.time}">
+											<input
+											type="hidden" name="plNo" value="${pp.plNo}">
 										<tr>
 											<td class="active"><input id="magic1" type="text"
 												name="name" value="${pp.coName}"></td>
-											<td id="magicTime" class="active">${pp.time}</td>
+											<td id="magicTime" class="active">${pp.plNo}</td>
 											<td id="magic2" class="active">${pp.plClass}</td>
 											<td class="success">${pp.plName}</td>
 											<%-- ${vs.count} --%>

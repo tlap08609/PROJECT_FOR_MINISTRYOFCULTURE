@@ -9,10 +9,10 @@ import regis.model.Votesystem;
 import regis.model.dao.VotesystemHibernateDAO;
 import co_name.model.Coname;
 
-public class init {
+public class Init {
 
 	public static void main(String[] args) throws IOException {
-		String co_name = "votesystemtest11.csv";
+		String co_name = "votesystemtest.csv";
 //		String co_name = "votesystem0118joy.csv";
 //		String co_name = "votesystem_test.csv";
 		BufferedReader br = null;
@@ -37,8 +37,8 @@ public class init {
 //							.println(aa.charAt(x) + "  " + (int) aa.charAt(x));
 //				}
 				Long co = Long.parseLong(aa);
-//				int foo = Integer.parseInt(array[6]);
-				Votesystem Votesystem = new Votesystem(co,array[1],array[2],array[3],array[4],array[5]);
+				int foo = Integer.parseInt(array[6]);
+				Votesystem Votesystem = new Votesystem(co,array[1],array[2],array[3],array[4],array[5],foo,array[7]);
 				init_votesystem.save(Votesystem);
 			}
 		} catch (FileNotFoundException e) {
@@ -48,6 +48,7 @@ public class init {
 		} finally {
 			if (br != null) {
 				try {
+					System.out.println("搬移完畢！");
 					br.close();
 				} catch (IOException e) {
 					e.printStackTrace();

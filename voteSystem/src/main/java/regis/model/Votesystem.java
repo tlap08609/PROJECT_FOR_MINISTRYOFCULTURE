@@ -20,7 +20,6 @@ public class Votesystem {
 		this.no = no;
 		this.coName = coName;
 		this.plNo = plNo;
-		
 		this.time = time;
 		this.plClass = plClass;
 		this.plName = plName;
@@ -35,6 +34,18 @@ public class Votesystem {
 		this.time = time;
 		this.plName = plName;
 		this.plClass = plClass;
+		this.score = score;
+		this.comment = comment;
+	}
+	
+	public Votesystem(long no,String coName,String plNo,String time,  String plName, 
+			int score, String comment) {
+		super();
+		this.no = no;
+		this.coName = coName;
+		this.plNo = plNo;
+		this.time = time;
+		this.plName = plName;
 		this.score = score;
 		this.comment = comment;
 	}

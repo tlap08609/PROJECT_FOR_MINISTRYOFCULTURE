@@ -1,45 +1,38 @@
 package all.util;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import regis.model.Votesystem;
 import regis.model.dao.VotesystemHibernateDAO;
-import co_name.model.Coname;
 
 public class Init {
 
 	public static void main(String[] args) throws IOException {
-		String co_name = "votesystemtest.csv";
-//		String co_name = "votesystem0118joy.csv";
-//		String co_name = "votesystem_test.csv";
+		File in = new File("voteFinal.csv");
 		BufferedReader br = null;
 		String line = "";
+		int count = 0;
 		VotesystemHibernateDAO init_votesystem = new VotesystemHibernateDAO();
 		try {
-			br = new BufferedReader(new FileReader(co_name));
+			br = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(in), "UTF8"));
 			while ((line = br.readLine()) != null) {
-				//處理bom
 				if (line.startsWith(String.valueOf('\ufeff'))
 						|| line.startsWith(String.valueOf('\ufffe'))) {
 					line = line.substring(1);
 				}
-				// List<String> list = new ArrayList<String>();
 				String[] array = line.split(",");
-				// list.add(array[1]);
-				// list.add(array[2]);
 				String aa = array[0];
-//				System.out.println("array[0]是" + array[0]);
-//				for (int x = 0; x < aa.length(); x++) {
-//					System.out
-//							.println(aa.charAt(x) + "  " + (int) aa.charAt(x));
-//				}
 				Long co = Long.parseLong(aa);
-				int foo = Integer.parseInt(array[6]);
-				Votesystem Votesystem = new Votesystem(co,array[1],array[2],array[3],array[4],array[5],foo,array[7]);
+				int foo = Integer.parseInt(array[5]);
+				Votesystem Votesystem = new Votesystem(co,array[1],array[2],array[3],array[4],foo,array[6]);
 				init_votesystem.save(Votesystem);
+				count++;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -48,55 +41,12 @@ public class Init {
 		} finally {
 			if (br != null) {
 				try {
-					System.out.println("搬移完畢！");
 					br.close();
+					System.out.println("搬移完畢！，共有"+count+"筆");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
-		// 存成coname表
-//		String co_name = "co_name.csv";
-//		BufferedReader br = null;
-//		String line = "";
-//		ConameHibernateDAO init_co_name = new ConameHibernateDAO();
-//		try {
-//			br = new BufferedReader(new FileReader(co_name));
-//			while ((line = br.readLine()) != null) {
-//				//處理bom
-//				if (line.startsWith(String.valueOf('\ufeff'))
-//						|| line.startsWith(String.valueOf('\ufffe'))) {
-//					line = line.substring(1);
-//				}
-//				// List<String> list = new ArrayList<String>();
-//				String[] array = line.split(",");
-//				// list.add(array[1]);
-//				// list.add(array[2]);
-//				String aa = array[0];
-//				System.out.println("array[0]是" + array[0]);
-//				for (int x = 0; x < aa.length(); x++) {
-//					System.out
-//							.println(aa.charAt(x) + "  " + (int) aa.charAt(x));
-//				}
-//
-//				Long co = Long.parseLong(aa);
-//				Coname Coname = new Coname(1, array[1]);
-//				init_co_name.save(Coname);
-//			}
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			if (br != null) {
-//				try {
-//					br.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-
 	}
-
 }

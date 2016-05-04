@@ -22,7 +22,7 @@ public class End {
 		try {
 			BufferedReader br = new BufferedReader(
 									new InputStreamReader(
-										new FileInputStream(file),"BIG5"));
+										new FileInputStream(file),"UTF8"));
 			String line = null;
 			int count = 0;
 			Map<String,List<String>> map = new LinkedHashMap<>(); 
@@ -50,10 +50,10 @@ public class End {
 			int ct85 = 0;
 			out.println("計畫名稱,評審A,評審B,評審C,平均分數,總分,超過85分以上的有幾個");
 			Set<String> set= map.keySet();
-			for (String name : set) {
-				List<String> ls= map.get(name);
+			for (String tt : set) {
+				List<String> ls= map.get(tt);
 				sb.setLength(0);
-				sb.append(name+",");
+				sb.append(tt+",");
 				sb.append(ls.get(1)+"("+ls.get(0)+"),"+ls.get(3)+"("+ls.get(2)+"),"+ls.get(5)+"("+ls.get(4)+"),");
 				sum = (Integer.parseInt(ls.get(1))+Integer.parseInt(ls.get(3))+Integer.parseInt(ls.get(5)));
 				avg = sum/3;

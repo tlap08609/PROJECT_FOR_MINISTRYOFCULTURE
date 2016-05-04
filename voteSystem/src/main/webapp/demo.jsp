@@ -129,7 +129,7 @@ body {
 											<td class="active"><input id="magic1" type="text"
 												name="name" value="${pp.coName}"></td>
 											<td id="magicTime" class="active">${pp.plNo}</td>
-											<td id="magic2" class="active">創業個人</td>
+											<td id="magic2" class="active">測試測試</td>
 											<td class="success">${pp.plName}</td>
 											<%-- ${vs.count} --%>
 											<td class="active"><input id="intscore${vs.count}"
